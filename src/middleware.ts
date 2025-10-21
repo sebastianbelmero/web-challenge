@@ -7,7 +7,6 @@ export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     if (pathname.startsWith('/dashboard') && (!accessToken && !refreshToken)) {
-        // Redirect ke halaman login
         const loginUrl = new URL('/login', request.url);
         loginUrl.searchParams.set('redirectedFrom', pathname);
         return NextResponse.redirect(loginUrl);
